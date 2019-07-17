@@ -6,3 +6,40 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/litera/bootswatch";
 
+.navbar-brand{
+    font-style: italic;
+}
+
+/* Sticky footer styles */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 80px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #e0e0e0;
+
+    .container {
+        padding-right: 15px;
+        padding-left: 15px;
+
+        p {
+            margin: 19px 0;
+            color: #000000;
+
+            a {
+                color: inherit;
+            }
+        }
+    }
+}
