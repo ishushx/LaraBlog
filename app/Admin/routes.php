@@ -12,4 +12,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('admin.home');
     $router->resource('categories', 'CategoriesController');
+    $router->resource('posts', 'PostController');
 });

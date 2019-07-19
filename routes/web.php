@@ -12,3 +12,5 @@
 */
 
 Route::get('/','PostsController@index')->name('index');
+Route::get('posts/{post}/{slug?}','PostsController@show')->name('posts.show');
+Route::get('categories/{category}','CategoriesController@show')->name('categories.show');

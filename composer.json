@@ -11,8 +11,12 @@
         "php": "^7.1.3",
         "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "~6.3",
+        "jxlwqq/simditor": "^1.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "overtrue/pinyin": "~3.0",
+        "predis/predis": "~1.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

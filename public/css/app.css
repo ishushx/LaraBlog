@@ -10956,3 +10956,11 @@ body {
   color: inherit;
 }
 
+.post-title {
+  color: inherit;
+}
+
+.post-title:hover {
+  text-decoration: none;
+}
+

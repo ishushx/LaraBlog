@@ -10,5 +10,15 @@ class CategoryObserver
     {
         Cache::forget('categories');
     }
+
+    public function updated()
+    {
+        Cache::forget('categories');
+    }
+
+    public function deleted()
+    {
+        Cache::forget('categories');
+    }
 }
 
