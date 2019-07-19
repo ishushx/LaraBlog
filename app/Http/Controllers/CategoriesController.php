@@ -9,7 +9,8 @@ class CategoriesController extends Controller
 {
     public function show(Category $category)
     {
-        $posts=$category->posts->paginate('10');
-        return view('categories.show',compact('posts'));
+        $posts=$category->posts()->orderBy('created_at','desc')->paginate('10');
+        session()->flash('info',$category->description);
+        return view('posts.index',compact('posts'));
     }
 }

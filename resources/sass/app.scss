@@ -6,6 +6,12 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/litera/bootswatch";
 
+// Fontawesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
 .navbar-brand{
     font-style: italic;
 }
@@ -44,9 +50,23 @@ body {
     }
 }
 
-.post-title{
+a{
     color: inherit;
     &:hover{
         text-decoration: none;
     }
+}
+.posts-index-title{
+    border-left: 3px solid $blue;
+    padding-left: 10px;
+}
+
+@import "post_content";
+
+img{
+    max-width: 100%;
+}
+
+.card-footer{
+    font-size: 12px;
 }

@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function index(Post $post)
+    public function index()
     {
-        $posts=$post->with('category')->paginate('10');
+        $posts=Post::with('category')->orderBy('created_at','desc')->paginate('10');
         return view('posts.index',compact('posts'));
     }
 
@@ -19,6 +19,9 @@ class PostsController extends Controller
         if ( ! empty($post->slug) && $post->slug != $request->slug) {
             return redirect($post->link(), 301);
         }
+
+        $post->visits()->increment();
+
         return view('posts.show',compact('post'));
     }
 }

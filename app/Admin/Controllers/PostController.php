@@ -28,10 +28,9 @@ class PostController extends AdminController
         $grid = new Grid(new Post);
 
         $grid->column('id', __('Id'))->sortable();
+        $grid->model()->orderBy('created_at','desc');
         $grid->column('title', __('标题'))->width(300);
-        $grid->column('content', __('内容'))->display(function ($content){
-            return \Str::limit($content,'100');
-        })->width(300);
+        $grid->column('excerpt', __('内容'))->width(300);
         $grid->column('category_id', __('所属分类'))->display(function ($category_id){
             return Category::find($category_id)->name;
         });
@@ -76,9 +75,12 @@ class PostController extends AdminController
     {
         $form = new Form(new Post);
 
-        $form->text('title', __('标题'))->rules('required|min:3');
-        $form->number('category_id', __('分类'));
-        $form->simditor('content', __('内容'));
+        $form->text('title', __('标题:'))->rules('required|min:3');
+
+        $categories=Category::all()->pluck('name')->toArray();
+        $form->select('category_id', __('分类:'))->options($categories);
+
+        $form->simditor('content', __('内容:'));
 
         return $form;
     }

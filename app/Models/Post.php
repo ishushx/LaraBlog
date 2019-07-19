@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Post extends Model
 {
     protected $fillable=[
@@ -18,4 +16,5 @@ class Post extends Model
     {
         return route('posts.show', array_merge([$this->id, $this->slug], $params));
     }
+
 }

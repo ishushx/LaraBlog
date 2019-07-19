@@ -79,3 +79,19 @@ a.editable-empty {
 #totop:hover {
     opacity: 1;
 }
+
+.simditor-body img{
+    max-width: 100%;
+}
+
+.simditor-body pre code{
+    display: block;
+    padding: 0;
+    margin: 0;
+    overflow: initial;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: #384548 !important;
+    color: #d4ebfd;
+    border: 0;
+}

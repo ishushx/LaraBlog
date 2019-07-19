@@ -2,6 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-8">
+            @include('layouts._message')
             @include('posts._posts',['posts'=>$posts])
             {!! $posts->render() !!}
         </div>
