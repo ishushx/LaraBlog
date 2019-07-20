@@ -2,7 +2,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-9">
-            <div class="card">
+            {{-- content --}}
+            <div id="post_content" class="card">
                 <div class="card-body">
                     <h3 class="card-title text-center ">{{$post->title}}    </h3>
                     <p class="text-center text-muted">
@@ -16,10 +17,74 @@
                     </div>
                 </div>
             </div>
+            <div id="reply_form" class="reply-form card mt-4">
+                <div class="card-header">
+                    <h5>发表评论</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('replies.front.store',$post->id).'#reply_form'}}" method="post">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="name" class="col-md-2 col-form-label text-md-left">用户名:</label>
+                            <div class="col-md-10">
+                                <input type="text" id="name" name="name"
+                                       class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}"
+                                       required>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-2 col-form-label text-md-left">邮箱地址:</label>
+                            <div class="col-md-10">
+                                <input type="text" id="email" name="email"
+                                       class="form-control @error('email') is-invalid @enderror"
+                                       value="{{old('email')}}" required>
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="content" class="col-md-2 col-form-label text-md-left">评论内容:</label>
+                            <div class="col-md-10">
+                                <textarea cols="3" rows="3" id="content" name="content"
+                                          class="form-control @error('email') is-invalid @enderror"
+                                          value="{{old('content')}}" required></textarea>
+                                @error('content')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <button class="form-control btn btn-success col-md-6 offset-md-3"><i class="fa fa-reply"></i>发表评论</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            @include('layouts._message')
+            <div id="reply_list" class="reply card mt-4">
+                @include('posts._replies',$replies)
+            </div>
         </div>
         <div class="col-md-3">
-
+            <div class="card">
+                <div class="empty-block">暂无数据 ~_~</div>
+            </div>
         </div>
     </div>
 
 @stop
+
+

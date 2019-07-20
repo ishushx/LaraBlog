@@ -14,3 +14,6 @@
 Route::get('/','PostsController@index')->name('index');
 Route::get('posts/{post}/{slug?}','PostsController@show')->name('posts.show');
 Route::get('categories/{category}','CategoriesController@show')->name('categories.show');
+
+Route::post('/posts/{post}/reply','RepliesController@store')->name('replies.front.store');
+Route::delete('/replies/{reply}','RepliesController@destroy')->name('replies.front.delete');

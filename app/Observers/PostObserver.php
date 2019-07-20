@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Handlers\SlugTranslateHandler;
 use App\Jobs\TranslateSlug;
 use App\Models\Post;
 

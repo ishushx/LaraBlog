@@ -17,4 +17,14 @@ class Post extends Model
         return route('posts.show', array_merge([$this->id, $this->slug], $params));
     }
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+    public function updateReplyCount()
+    {
+         $this->reply_count=$this->replies->count();
+         $this->save();
+    }
 }

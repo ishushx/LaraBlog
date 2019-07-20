@@ -19,9 +19,10 @@ class PostsController extends Controller
         if ( ! empty($post->slug) && $post->slug != $request->slug) {
             return redirect($post->link(), 301);
         }
-
+        //查看次数统计
         $post->visits()->increment();
-
-        return view('posts.show',compact('post'));
+        //
+        $replies=$post->replies()->orderBy('created_at','desc')->get();
+        return view('posts.show',compact('post','replies'));
     }
 }
