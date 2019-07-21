@@ -2,20 +2,21 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\Post;
 use App\Models\Reply;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class ReplyController extends AdminController
+class RepliesController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'App\Models\Reply';
+    protected $title = '评论列表';
 
     /**
      * Make a grid builder.
@@ -27,12 +28,14 @@ class ReplyController extends AdminController
         $grid = new Grid(new Reply);
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('name', __('用户名'));
         $grid->column('email', __('Email'));
-        $grid->column('content', __('Content'));
-        $grid->column('post_id', __('Post id'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('content', __('评论内容'))->style('max-width:280px;word-break:break-all;');;
+        $grid->column('post_id', __('所属文章'))->display(function ($post_id){
+            return Post::find($post_id)->title;
+        });
+        $grid->column('created_at', __('创建于'))->sortable();
+
 
         return $grid;
     }

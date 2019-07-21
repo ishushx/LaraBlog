@@ -10,6 +10,9 @@
                         <i class="fa fa-comment mr-1"></i>{{$post->reply_count}}条评论
                         <i class="fa fa-list-alt mr-1 ml-2"></i>{{$post->visits()->count()}}次阅览
                     </p>
+                    @foreach($post->tags as $tag)
+                        <span class="badge badge-pill badge-info mt-0 mb-0">{{$tag->name}}</span>
+                    @endforeach
 
                     <hr>
                     <div class="post-content">
@@ -66,21 +69,38 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <button class="form-control btn btn-success col-md-6 offset-md-3"><i class="fa fa-reply"></i>发表评论</button>
+                            <button class="form-control btn btn-success col-md-6 offset-md-3"><i
+                                    class="fa fa-reply"></i>发表评论
+                            </button>
                         </div>
                     </form>
                 </div>
 
             </div>
 
-            @include('layouts._message')
             <div id="reply_list" class="reply card mt-4">
                 @include('posts._replies',$replies)
             </div>
         </div>
         <div class="col-md-3">
             <div class="card">
-                <div class="empty-block">暂无数据 ~_~</div>
+                <div class="card-body">
+                    @if ($previousID === null)
+                        <button type="button" class="btn btn-info float-left"><a href="#">上一篇:无</a></button>
+                        <button type="button" class="btn btn-info float-right"><a
+                                href="{{route('posts.show',$nextID)}}">下一篇</a></button>
+                    @elseif ($nextID ===null)
+                        <button type="button" class="btn btn-info float-left"><a
+                                href="{{route('posts.show',$previousID)}}">上一篇</a></button>
+                        <button type="button" class="btn btn-info float-right"><a href="#">下一篇:无</a></button>
+                    @else
+                        <button type="button" class="btn btn-info float-left"><a
+                                href="{{route('posts.show',$previousID)}}">上一篇</a></button>
+                        <button type="button" class="btn btn-info float-right"><a
+                                href="{{route('posts.show',$nextID)}}">下一篇</a></button>
+                    @endif
+
+                </div>
             </div>
         </div>
     </div>

@@ -17,3 +17,5 @@ Route::get('categories/{category}','CategoriesController@show')->name('categorie
 
 Route::post('/posts/{post}/reply','RepliesController@store')->name('replies.front.store');
 Route::delete('/replies/{reply}','RepliesController@destroy')->name('replies.front.delete');
+
+Route::post('/search','PostsController@search')->name('search');

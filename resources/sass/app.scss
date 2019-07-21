@@ -13,7 +13,8 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
 .navbar-brand{
-    font-style: italic;
+    color: #007bff !important;
+    font-weight: bold;
 }
 
 /* Sticky footer styles */
@@ -72,5 +73,11 @@ img{
 }
 
 .img-circle{
+    max-width: 60px;
     border-radius: 50%;
+}
+
+.rounded-search{
+    border-top-left-radius: 1.078em;
+    border-bottom-left-radius: 1.078em;
 }
