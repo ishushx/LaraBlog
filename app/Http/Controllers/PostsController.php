@@ -33,6 +33,8 @@ class PostsController extends Controller
 
     public function search(Request $request)
     {
-        dd($request->input('keyword'));
+        $keyword=$request->input('keyword');
+        $posts=Post::search($keyword)->paginate(8);
+        return view('posts.search',compact('posts','keyword'));
     }
 }

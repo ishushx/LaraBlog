@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
+
 class Post extends Model
 {
+    use Searchable;
+
     protected $fillable=[
         'title','content','category_id','slug','excerpt'
     ];
@@ -33,4 +37,15 @@ class Post extends Model
          $this->save();
     }
 
+    public function searchableAs()
+    {
+        return 'my_blog_posts';
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        return $array;
+    }
 }
