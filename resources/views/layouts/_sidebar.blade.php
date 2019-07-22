@@ -4,9 +4,9 @@
             <img src="http://qiniu.larahsx.com/images/7e07f34da04e80e30b08c02ff517ef7e.png" alt="hushixian"
                  class="img-circle">
             <hr>
-            <span class="mr-2"><i class="fab fa-2x fa-github"></i></span>
-            <span class="mr-2"><i class="fab fa-2x fa-weibo"></i></span>
-            <span><i class="fas fa-2x fa-envelope"></i></span>
+            <span class="mr-4"><i class="fab fa-lg fa-github"></i></span>
+            <span class="mr-4"><i class="fab fa-lg fa-weixin" style="color:#15aabf;"></i></span>
+            <span><i class="fas fa-lg fa-envelope" style="color:rgb(229,76,65);"></i></span>
         </div>
     </div>
 </div>

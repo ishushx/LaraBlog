@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Laravel\Horizon\Horizon;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
@@ -19,8 +18,10 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
         // Horizon::routeSmsNotificationsTo('15556667777');
         // Horizon::routeMailNotificationsTo('example@example.com');
         // Horizon::routeSlackNotificationsTo('slack-webhook-url', '#channel');
-
         // Horizon::night();
+        \Horizon::auth(function () {
+           return \Admin::user()->can('horizon');
+        });
     }
 
     /**
@@ -33,9 +34,12 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewHorizon', function ($user) {
+            dd(\Admin::user());
             return in_array($user->email, [
 
             ]);
         });
     }
+
+
 }

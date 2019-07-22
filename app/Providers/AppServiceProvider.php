@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Category::observe(CategoryObserver::class);
         Post::observe(PostObserver::class);
         Reply::observe(ReplyObserver::class);
-
     }
+
+
 }

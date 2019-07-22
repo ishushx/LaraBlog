@@ -6,7 +6,7 @@
                 <div class="card-header d-flex justify-content-between text-muted">
                     <span class="">搜索关键字为: {{$keyword}} </span>
                     <span class="">共搜索到: {{count($posts)}} 条记录</span>
-                    <span class="">by algolia<i class="fab fa-algolia ml-1"></i></span>
+                    <span class="">by algolia<i class="fab fa-algolia ml-1" style="color: #5468ff;"></i></span>
                 </div>
                 <div class="card-body">
                     @if (count($posts)>0)

@@ -12,6 +12,7 @@ class HomeController extends Controller
 {
     public function index(Content $content)
     {
+        \Admin::user();
         return $content
             ->title('后台首页')
             ->description('环境信息')
