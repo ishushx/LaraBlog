@@ -88,7 +88,7 @@
                     @if ($previousID === null)
                         <button type="button" class="btn btn-info float-left"><a href="#">上一篇:无</a></button>
                         <button type="button" class="btn btn-info float-right"><a
-                                href="{{route('posts.show',$nextID)}}">下一篇</a></button>
+                                href="{{route('posts.show',$nextID??"$post->id")}}">下一篇</a></button>
                     @elseif ($nextID ===null)
                         <button type="button" class="btn btn-info float-left"><a
                                 href="{{route('posts.show',$previousID)}}">上一篇</a></button>
