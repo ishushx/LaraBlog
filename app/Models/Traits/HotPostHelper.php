@@ -102,7 +102,7 @@ trait HotPostHelper
     {
         $redis = Redis::connection('laravel-visits');
         $max = \DB::table('posts')->max('id');
-        $view_posts = $redis->zrevrangebyscore('visits:posts_visits', $max, 1, array('withscores' => true));
+        $view_posts = $redis->zrevrangebyscore('laravel_blog_database_visits:posts_visits', $max, 1, array('withscores' => true));
 
         foreach ($view_posts as $post_id => $post_view_count) {
             $view_score = $post_view_count * $this->view_weight;
