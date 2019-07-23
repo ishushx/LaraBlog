@@ -386,6 +386,6 @@ return [
                 'pasteImage' => true,
                 'cleanPaste' => false,
             ]
-        ]
+        ],
     ],
 ];

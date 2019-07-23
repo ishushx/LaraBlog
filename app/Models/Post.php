@@ -6,6 +6,7 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
+    use Traits\HotPostHelper;
     use Searchable;
 
     protected $fillable=[

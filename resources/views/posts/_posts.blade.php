@@ -1,5 +1,5 @@
 @foreach($posts as $post)
-    <div class="card border-secondary mb-3">
+    <div class="card border mb-3">
         <div class="card-body">
             <h3 class="card-title posts-index-title"><a href="{{$post->link()}}" class="post-title" style="color:inherit;">{{$post->title}}</a></h3>
             <hr>

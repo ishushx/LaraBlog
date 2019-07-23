@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index(Post $post)
     {
-        $posts = Post::with('category')->orderBy('created_at', 'desc')->paginate('10');
-        return view('posts.index', compact('posts'));
+        $posts = Post::with('category','tags')->orderBy('created_at', 'desc')->paginate('10');
+        $hot_posts=$post->getHotPosts();
+        $tags=Tag::all();
+        return view('posts.index', compact('posts','hot_posts','tags'));
     }
 
     public function show(Post $post, Request $request)

@@ -19,3 +19,5 @@ Route::post('/posts/{post}/reply','RepliesController@store')->name('replies.fron
 Route::delete('/replies/{reply}','RepliesController@destroy')->name('replies.front.delete');
 
 Route::post('/search','PostsController@search')->name('search');
+
+Route::get('/tags/{id}', 'TagsController@index')->name('tags.index');

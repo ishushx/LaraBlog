@@ -16,6 +16,7 @@
         "guzzlehttp/guzzle": "~6.3",
         "hieu-le/active": "~3.5",
         "jxlwqq/simditor": "^1.0",
+        "laravel-admin-ext/config": "^1.0",
         "laravel/framework": "5.8.*",
         "laravel/horizon": "~3.1",
         "laravel/scout": "^7.1",
