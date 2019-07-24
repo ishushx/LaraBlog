@@ -3,28 +3,35 @@
 * 产品名称：LaraBLog
 * 项目代号：larablog
 * 官方地址：https://www.larahsx.com
+* 后台地址：https://www.larahsx.com/admin (用户名:guest 密码:guest)
 * GitHub 地址:https://github.com/ishushx/LaraBlog
 
 LaraBBS 是一个简洁的博客应用，使用 Laravel5.8 编写而成。
 
 ![](http://qiniu.larahsx.com/01D86869-EF0C-42E1-B6E0-2F9700E372F0.png)
 
+![](http://qiniu.larahsx.com/20190724112029.png)
+
 ## 功能如下
 
-- 个人中心 —— 用户个人中心，编辑资料；
-- 用户授权 —— 作者才能删除自己的内容；
-- 上传图片 —— 修改头像和编辑话题时候上传图片；
-- 表单验证 —— 使用表单验证类；
-- 文章发布时自动 Slug 翻译，支持使用队列方式以提高响应；
-- 站点『热门文章』计算，一小时计算一次；
-- 多角色权限管理 —— 允许站长，管理员权限的存在；
-- 后台管理 —— 后台数据模型管理；
-- 邮件通知 —— 发送新回复邮件通知，队列发送邮件；
-- 站内通知 —— 话题有新回复；
-- 自定义 Artisan 命令行 —— 自定义活跃用户计算命令；
-- 自定义 Trait —— 活跃用户的业务逻辑实现；
-- 自定义中间件 —— 记录用户的最后登录时间；
-- XSS 安全防御；
+#### 前台
+- 首页文章展示 —— 使用 with 方法进行关联模型预加载，避免N+1问题；
+- 分类详情页 —— 分类数据从缓存中读取，使用视图合成器 viewComposer 传递数据；
+- 标签详情页 —— 标签模型与文章模型多对多关联；
+- 评论发表删除 —— 使用 ReplyRequest 进行表单验证,ReplyObserver 进行回复数量字段更新.删除时,使用 email 字段作为授权认证方法,通过 axios.delete 方法调用删除接口 
+- 搜索页 —— 基于 Laravel Scout 全文搜索的 Algolia 驱动；
+- 热门文章 —— 后台使用定时任务加权算出得分存入缓存中；
+- 配置化 —— 网站可变处使用 congfig 函数配置化
+
+#### 后台
+- 后台使用 laravel-admin 1.7.3 版本
+- 文章,评论,分类,标签 crud
+- 文章发布时,对应的 Obersver 推送 TranslateSlug 队列任务
+- 队列任务管理 —— 使用 admin 中间件, laravel-admin 的RBAC权限控制接管 Horizon 访问权限；
+- 自定义 Artisan 命令行 —— 自定义热门文章计算命令；
+- 自定义 Trait —— 热门文章的业务逻辑实现；
+- laravel-visits —— 记录文章的浏览数目；
+- XSS,CSRF 安全防御；
 
 ## 运行环境要求
 
@@ -157,7 +164,7 @@ yarn run watch
 
 // 在某些环境中，当文件更改时，Webpack 不会更新。如果系统出现这种情况，请考虑使用 watch-poll 命令：
 
-npm run watch-poll
+yarn run watch-poll
 ```
 
 ### 链接入口
@@ -176,16 +183,16 @@ password: admin
 
 ## 扩展包使用情况
 
-| 扩展包 | 一句话描述 | 本项目应用场景 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| [guzzlehttp/guzzle](https://github.com/guzzle/guzzle) | HTTP 请求套件 | 请求百度翻译 API  |
-| [predis/predis](https://github.com/nrk/predis.git) | Redis 官方首推的 PHP 客户端开发包 | 缓存驱动 Redis 基础扩展包 |
-| [hieu-le/active](https://github.com/letrunghieu/active) | 选中状态 | 顶部导航栏选中状态 |
-| [laravel/horizon](https://github.com/laravel/horizon) | 队列监控 | 队列监控命令与页面控制台 admin/horizon |
-| [awssat/laravel-visits](https://github.com/awssat/laravel-visits) | 页面统计 | 基于 Redis 有序集合记录文章浏览次数|
-| [laravel/scount](https://github.com/laravel/scount) | 全文搜索 | laravel 官方推荐的搜索包|
-| [algolia/algoliasearch-client-php](https://github.com/algolia/algoliasearch-client-php) | algolia 搜索 | 搜索引擎|
-| [encore/laravel-admin](https://github.com/encore/laravel-admin) |管理后台| laravel-admin管理后台|
+ |扩展包 | 一句话描述 | 本项目应用场景 |
+ | --- | --- | --- |
+ |[guzzlehttp/guzzle](https://github.com/guzzle/guzzle) | HTTP 请求套件 | 请求百度翻译 API  |
+ |[predis/predis](https://github.com/nrk/predis.git) | Redis 官方首推的 PHP 客户端开发包 | 缓存驱动 Redis 基础扩展包 |
+ |[hieu-le/active](https://github.com/letrunghieu/active) | 选中状态 | 顶部导航栏选中状态 |
+ |[laravel/horizon](https://github.com/laravel/horizon) | 队列监控 | 队列监控命令与页面控制台 admin/horizon || 
+ |[awssat/laravel-visits](https://github.com/awssat/laravel-visits) | 页面统计 | 基于 Redis 有序集合记录文章浏览次数|
+ |[laravel/scount](https://github.com/laravel/scount) | 全文搜索 | laravel 官方推荐的搜索包|
+ |[algolia/algoliasearch-client-php](https://github.com/algolia/algoliasearch-client-php) | algolia 搜索 | 搜索引擎|
+ |[encore/laravel-admin](https://github.com/encore/laravel-admin) |管理后台| laravel-admin管理后台|
 
 
 ## 自定义 Artisan 命令
