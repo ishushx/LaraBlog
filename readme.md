@@ -6,7 +6,7 @@
 * 后台地址：https://www.larahsx.com/admin (用户名:guest 密码:guest)
 * GitHub 地址:https://github.com/ishushx/LaraBlog
 
-LaraBBS 是一个简洁的博客应用，使用 Laravel5.8 编写而成。
+LaraBlog 是一个简洁的博客应用，使用 Laravel5.8 编写而成。
 
 ![](http://qiniu.larahsx.com/01D86869-EF0C-42E1-B6E0-2F9700E372F0.png)
 
